@@ -1,0 +1,8 @@
+{
+  "corns":[
+    {
+      "path": "/api/corns",
+      "schedule": "0 9 * * *"
+    }
+  ]
+}

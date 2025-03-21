@@ -1,0 +1,42 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  BLOOD_DONER
+  BLOOD_SEEKER
+}
+
+model User {
+  id                  String    @id @default(uuid())
+  name                String
+  password            String?
+  isVarified          Boolean   @default(false)
+  isAdmin             Boolean   @default(false)
+  varifiedToken       String?
+  varifiedTokenExpire DateTime?
+  avatarUrl           String?   @db.Text
+  email               String    @unique
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  googleId            String?
+  role                Role
+  age                 Int?
+  gender              String?
+  bloodGroup          String?
+  location            String?
+  lastDonation        DateTime?
+  status              String?
+  number              String?
+}
+
+model VerificationToken {
+  id    String @id @default(uuid())
+  email String
+  otp   String
+}
