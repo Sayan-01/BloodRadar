@@ -41,7 +41,7 @@ const sendSMS = async (receiver: any, message: any) => {
   }
 };
 
-export async function GET() {
+export async function POST() {
   try {
     const allNumbers = await getDonorsNumbers();
 
